@@ -14,9 +14,13 @@ stan.on('connect', async () => {
     const publisher = new TicketCreatedPublisher(stan)
 
     //enforces exact same object which we are passing
-    await publisher.publish({
-        id: '123',
-        title: 'concert',
-        price: 20,
-    })
+    try {
+        await publisher.publish({
+            id: '123',
+            title: 'concert',
+            price: 20,
+        })
+    } catch (error) {
+        console.error(error)
+    }
 })

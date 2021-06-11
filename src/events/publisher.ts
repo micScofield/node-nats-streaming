@@ -1,4 +1,4 @@
-import nats, { Stan } from 'node-nats-streaming'
+import { Stan } from 'node-nats-streaming'
 
 import { Subjects } from './subjects'
 
@@ -22,7 +22,7 @@ export abstract class Publisher<T extends Event> {
                 if (err) {
                     return reject(err)
                 }
-
+                console.log('Event published to: ', this.subject)
                 resolve()
             })
         })
